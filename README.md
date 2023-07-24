@@ -24,4 +24,7 @@ A系统、B系统一直在使用fdp-core 3.4基础工具库。
 A系统在开发中，发现了fdp-core 3.4中的某些Bug。  
 这些修改是有共性的、有益处的，也要保留同步给其它系统使用。所以要在fdp-core基础工具库这个项目中来修改，使用 fdp-core 3.4 升级到了 fdp-core 3.4.1。  
 A系统 现在改为使用fdp-core 3.4.1，就可以解决Bug了。  
-B系统、C系统也要修复这个Bug，B系统\、C系统修改Maven pom的依赖就可使用到fdp-core 3.4.1了。  
+B系统、C系统也要修复这个Bug，B系统\、C系统修改Maven pom的依赖就可使用到fdp-core 3.4.1了。
+
+
+111
