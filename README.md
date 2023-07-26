@@ -26,5 +26,3 @@ A系统在开发中，发现了fdp-core 3.4中的某些Bug。
 A系统 现在改为使用fdp-core 3.4.1，就可以解决Bug了。  
 B系统、C系统也要修复这个Bug，B系统\、C系统修改Maven pom的依赖就可使用到fdp-core 3.4.1了。
 
-
-111
