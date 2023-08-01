@@ -24,9 +24,11 @@ import org.slf4j.LoggerFactory;
  * 方法
  * 使用jsoup HTML Cleaner 方法进行清除，但需要指定一个可配置的 Whitelist。
  * 示例
+ * {@code
  * String unsafe ="<p><a href='http://example.com/' onclick='stealCookies()'>Link</a></p>";
  * String safe = Jsoup.clean(unsafe, Whitelist.basic());
  * // now: <p><a href="http://example.com/" rel="nofollow">Link</a></p>
+ * }
  * <p>
  * jsoup提供了一系列的Whitelist基本配置，能够满足大多数要求；但如有必要，也可以进行修改，不过要小心。
  * 这个cleaner非常好用不仅可以避免XSS攻击，还可以限制用户可以输入的标签范围。

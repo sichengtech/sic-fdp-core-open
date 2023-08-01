@@ -2,10 +2,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.sicheng</groupId>
+    <groupId>io.github.sichengtech</groupId>
     <artifactId>fdp-core-open</artifactId>
     <version>3.6.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <!-- 为了发布自己的jar包到Maven中央仓库，添加了以下配置，Sonatype仓库便是Maven中央仓库指定的暂存库 -->
+    <!-- 项目 URL 、SCM信息、开发者信息 -->
+    <url>https://github.com/sichengtech/sic-fdp-core-open</url>
+    <scm>
+        <url>https://github.com/sichengtech/sic-fdp-core-open</url>
+        <connection>https://github.com/sichengtech/sic-fdp-core-open.git</connection>
+        <developerConnection>https://github.com/sichengtech/sic-fdp-core-open.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    <developers>
+        <developer>
+            <id>sichengtech</id>
+            <name>sichengtech</name>
+            <email>admin@sicheng.net</email>
+            <url>http://www.sicheng.net</url>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>木兰公共许可证,第2版（Mulan PubL v2）0</name>
+            <url>http://license.coscl.org.cn/MulanPubL-2.0</url>
+        </license>
+    </licenses>
+
 
     <!-- 项目属性 -->
     <properties>
@@ -63,6 +89,7 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <!-- 为了发布自己的jar包到我公司的Nexus仓库，添加了以下配置 -->
     <!--指定Maven分发构件Deploy上传jar包时的nexus仓库地址-->
     <distributionManagement>
         <repository>
@@ -74,6 +101,7 @@
             <url>https://nexus.sicheng.net:8443/repository/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
+
 
     <!-- 依赖项定义 -->
     <dependencies>
@@ -541,7 +569,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <!--					<encoding>${project.build.sourceEncoding}</encoding>-->
+                    <!-- <encoding>${project.build.sourceEncoding}</encoding>-->
                     <excludes>
                         <!-- 打jar包时，不包含以下文件，排除MapperRefresh类（自动加载被修改的MyBatis Mapper XML文件） -->
                         <exclude>org/**</exclude>
@@ -553,64 +581,113 @@
                 </configuration>
             </plugin>
 
-<!--            &lt;!&ndash; resource插件 &ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-resources-plugin</artifactId>-->
-<!--                <version>3.1.0</version>-->
-<!--            </plugin>-->
-
-<!--            &lt;!&ndash; install插件 &ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-install-plugin</artifactId>-->
-<!--                <version>2.5.2</version>-->
-<!--            </plugin>-->
-
-<!--            &lt;!&ndash; clean插件 &ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-clean-plugin</artifactId>-->
-<!--                <version>3.1.0</version>-->
-<!--            </plugin>-->
-
-<!--            &lt;!&ndash; dependency插件 &ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-dependency-plugin</artifactId>-->
-<!--                <version>3.1.1</version>-->
-<!--            </plugin>-->
-
-<!--            &lt;!&ndash; test插件 &ndash;&gt;-->
-<!--            &lt;!&ndash; 执行单个测试文件：mvn test -Dtest=App2Test指定执行App2Test这个单元测试. &ndash;&gt;-->
-<!--            &lt;!&ndash; 是maven里执行测试用例的插件,如果说maven已经有了maven-surefire-plugin的默认配置，-->
-<!--            我们还有必要了解maven-surefire-plugin的配置么？答案是肯定的。虽说maven-surefire-plugin有默认配置，-->
-<!--            但是当需要修改一些测试执行的策略时，就有必要我们去重新配置这个插件了。 &ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>2.22.2</version>-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash; mvn package时默认跳过测试，如果想测试请手动执行 mvn test &ndash;&gt;-->
-<!--                    <skipTests>true</skipTests>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-
-<!--            &lt;!&ndash; maven-source-plugin提供项目自动将源码打包并发布的功能 &ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-source-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>attach-sources</id>-->
-<!--                        <goals>-->
-<!--                            <goal>jar</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-
         </plugins>
     </build>
+
+
+    <!-- 为了发布自己的jar包到Maven中央仓库，添加了以下一套配置 -->
+    <!-- 发布到 Maven 仓库中的所有文件都要使用 GPG 签名，以保障完整性。GPG 的主要作用是生成密钥对,并签名。
+    由于使用 GPG 对Javadoc、jar、源代码进行签名是一个非常耗时的过程，因此通常将这些任务与日常的构建要隔离开来，方式是把这套配置移入到profiles标签表示的环境中。
+    然后，当通过激活id为deploy-to-ossrh环境的配置，就可执行向ossrh仓库的部署任务，就可发布自己的jar包到Maven中央仓库，结构如下： -->
+    <profiles>
+        <profile>
+            <id>deploy-to-ossrh</id>  <!-- id为deploy-to-ossrh环境配置 -->
+            <build>
+                <plugins>
+                    <!-- Source 插件 -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>3.1.1</version>
+                    </plugin>
+                    <!-- Source -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Javadoc 插件 -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.2.0</version>
+                        <configuration>
+                            <charset>UTF-8</charset>
+                            <docencoding>UTF-8</docencoding>
+                            <show>package</show>
+                            <tags>
+                                <tag>
+                                    <name>date</name>
+                                </tag>
+                            </tags>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <doclint>none</doclint>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Gpg Signature GPG 签名插件 -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <!-- id 与 setting.xml 的 gpg 配置中的 id 对应,用于取到密码-->
+                                <id>ossrh</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Maven 部署流程插件 Nexus Staging Maven -->
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.13</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <!-- 与 setting.xml 的 server 配置中的 sonatype-release 对应,用于取到账号与密码-->
+                            <serverId>oss-release</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <!--指定Maven分发构件Deploy上传jar包时的nexus仓库地址-->
+            <!--Sonatype仓库便是Maven中央仓库指定的暂存库，会自动同步到Maven中央仓库 -->
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>sonatype-snapshots</id>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>sonatype-release</id>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
 
 </project>
