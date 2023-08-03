@@ -4,11 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.sichengtech</groupId>
     <artifactId>fdp-core-open</artifactId>
-    <version>3.6.1-SNAPSHOT</version>
+    <version>3.6.3</version>
     <packaging>jar</packaging>
 
     <!-- 为了发布自己的jar包到Maven中央仓库，添加了以下配置，Sonatype仓库便是Maven中央仓库指定的暂存库 -->
     <!-- 项目 URL 、SCM信息、开发者信息 -->
+    <name>${project.artifactId}</name>
+    <description>
+        fdp-core-open is achieved through basic tools.
+        fdp-core是一套基础工具库，它独立发展功能并不断完善。
+        “基础工具库” 我只维护一套，供众多客户项目使用，众多客户项目都依赖fdp-core基础工具库，实现复用的目标。
+    </description>
     <url>https://github.com/sichengtech/sic-fdp-core-open</url>
     <scm>
         <url>https://github.com/sichengtech/sic-fdp-core-open</url>
@@ -27,7 +33,7 @@
     </developers>
     <licenses>
         <license>
-            <name>木兰公共许可证,第2版（Mulan PubL v2）0</name>
+            <name>木兰公共许可证,第2版（Mulan PubL v2）</name>
             <url>http://license.coscl.org.cn/MulanPubL-2.0</url>
         </license>
     </licenses>
@@ -69,38 +75,24 @@
 
     </properties>
 
-    <!-- 设定主仓库，按设定顺序进行查找。 -->
+    <!-- 阿里云公共仓库 , http://maven.aliyun.com/mvn/view 这里可浏览仓库的内容 -->
     <repositories>
-        <!-- 这是我公司的代理仓库，它代理多个重要的仓库-->
         <repository>
-            <id>public</id>
-            <name>Sicheng公司的代理仓库，它代理多个重要的仓库。只可从公司内网访问。</name>
-            <url>https://nexus.sicheng.net:8443/repository/maven-public/</url>
+            <id>aliyunmaven</id>
+            <name>阿里云公共仓库</name>
+            <url>https://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
     </repositories>
 
-    <!-- 设定插件仓库 -->
+    <!-- 插件仓库也使用阿云的maven仓库 -->
     <pluginRepositories>
-        <!-- 这是我公司的代理仓库，它代理多个重要的仓库-->
         <pluginRepository>
-            <id>public</id>
-            <name>Public Repositories</name>
-            <url>https://nexus.sicheng.net:8443/repository/maven-public/</url>
+            <id>aliyunmaven</id>
+            <name>阿里云公共仓库</name>
+            <url>https://maven.aliyun.com/nexus/content/groups/public/</url>
         </pluginRepository>
     </pluginRepositories>
 
-    <!-- 为了发布自己的jar包到我公司的Nexus仓库，添加了以下配置 -->
-    <!--指定Maven分发构件Deploy上传jar包时的nexus仓库地址-->
-    <distributionManagement>
-        <repository>
-            <id>sicheng-repos</id>
-            <url>https://nexus.sicheng.net:8443/repository/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>sicheng-repos</id>
-            <url>https://nexus.sicheng.net:8443/repository/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 
     <!-- 依赖项定义 -->
@@ -667,7 +659,7 @@
                         <extensions>true</extensions>
                         <configuration>
                             <!-- 与 setting.xml 的 server 配置中的 sonatype-release 对应,用于取到账号与密码-->
-                            <serverId>oss-release</serverId>
+                            <serverId>sonatype-release</serverId>
                             <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
