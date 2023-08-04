@@ -93,6 +93,20 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <!--破坏定位标记4-start-->
+    <!-- 为了发布自己的jar包到我公司的Nexus仓库，添加了以下配置 -->
+    <!--指定Maven分发构件Deploy上传jar包时的nexus仓库地址-->
+    <distributionManagement>
+        <repository>
+            <id>sicheng-repos</id>
+            <url>https://nexus.sicheng.net:8443/repository/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>sicheng-repos</id>
+            <url>https://nexus.sicheng.net:8443/repository/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <!--定位标记4-end-->
 
 
     <!-- 依赖项定义 -->
