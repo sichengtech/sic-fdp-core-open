@@ -2,6 +2,8 @@ package com.sicheng.common.web;
 
 import com.sicheng.common.utils.DateUtils;
 import com.sicheng.common.utils.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.NamedThreadLocal;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -36,6 +38,7 @@ import java.util.*;
  * @version 创建时间：2011-4-28 下午04:29:24
  */
 public class R implements Filter {
+    private static Logger logger = LoggerFactory.getLogger(R.class);
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
@@ -61,7 +64,7 @@ public class R implements Filter {
     public static void destroyAll() {
         R.removeRequest();
         R.removeResponse();
-        //System.out.println("%%%% 关闭：R工具--Request\\Response便捷工具类 %%%%");
+        logger.info("%%%% 关闭：R工具--Request\\Response便捷工具类 %%%%");
         synchronized (R.class) {
             try {
                 R.class.wait(500L);
@@ -896,7 +899,7 @@ public class R implements Filter {
             HttpServletRequest request = R.getRequest();
             if (request != null) {
                 String path = request.getSession().getServletContext().getRealPath("/");
-                System.out.println("path=" + path);
+                logger.debug("getWebRootSub(),path=" + path);
 
                 //Eclipse,勾选 Server modules without publishing
                 //D:\dev2\eclipse-workspace2\shop-all\shop-web-wap\target\m2e-wtp\web-resources\ ,去掉了3层，加"/src/main/webapp"
@@ -920,7 +923,7 @@ public class R implements Filter {
             ///////////////////////////////////////////////////////////////
 
             String path = R.class.getClassLoader().getResource("").toURI().getPath();
-            System.out.println("path2=" + path);
+            logger.debug("getWebRootSub(),path2=" + path);
             if (path == null) {
                 throw new NullPointerException("获取WebRoot异常");
             }

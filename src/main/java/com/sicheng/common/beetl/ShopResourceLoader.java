@@ -164,7 +164,8 @@ public class ShopResourceLoader implements ResourceLoader {
             parent = new ClasspathResourceLoader(parentPath.substring(CLASSPATH.length()));
         } else {
             //从webroot加载模板文件
-            String p = BeetlUtil.getWebRoot() + File.separator + parentPath;//"/views/front/default";
+            String webRoot=BeetlUtil.getWebRoot();
+            String p = webRoot + (isJoint(webRoot,parentPath)?File.separator:"") + parentPath;//"/views/front/default";
             parent = new WebAppResourceLoader(p);// "/views/front/default"
         }
 
@@ -176,7 +177,8 @@ public class ShopResourceLoader implements ResourceLoader {
             child = new ClasspathResourceLoader(childPath.substring(CLASSPATH.length()));
         } else {
             //从webroot加载模板文件
-            String c = BeetlUtil.getWebRoot() + File.separator + childPath;//"/views/front/demo";
+            String webRoot=BeetlUtil.getWebRoot();
+            String c = webRoot + (isJoint(webRoot,childPath)?File.separator:"")  + childPath;//"/views/front/demo";
             child = new WebAppResourceLoader(c);// "/views/front/qiche"
         }
 
@@ -279,5 +281,45 @@ public class ShopResourceLoader implements ResourceLoader {
      */
     public static String getParentPath2() {
         return parentPath2;
+    }
+
+    /**
+     * 判断 webRoot和path之间，是否要拼接 File.separator
+     * File.separator 是系统默认的文件分隔符号
+     *
+     * 前题：
+     * 当webRoot = C:\dev-java\IdeaProjects\project-b2b2cShop\shop-web-front\target\front
+     * 当path = /views/front/default
+     *
+     * 错误示例：
+     * 没有判断直接强拼接 webRoot + File.separator + path 拼接好的路径如下：
+     * C:\dev-java\IdeaProjects\project-b2b2cShop\shop-web-front\target\front\/views/front/default
+     * 注意：front\/views 这里，多拼接了一个\符号。
+     *
+     * 正常的示例：
+     * C:\dev-java\IdeaProjects\project-b2b2cShop\shop-web-front\target\front/views/front/default
+     * 注意：front/views 这里，只有一个/符号。
+     *
+     * @param webRoot  前路径
+     * @param path     后路径
+     * @return  true表示要在中间拼接File.separator，false表示不要在中间拼接File.separator
+     */
+    private static boolean isJoint(String webRoot, String path){
+        if(webRoot==null || path==null ){
+            return false;
+        }
+        boolean b1=false;
+        if(webRoot.endsWith("\\") || webRoot.endsWith("/")){
+            b1=true;
+        }
+        boolean b2=false;
+        if(path.startsWith("\\") || path.startsWith("/")){
+            b2=true;
+        }
+        if(b1||b2){
+            return false;
+        }else{
+            return true;
+        }
     }
 }
