@@ -130,6 +130,12 @@ public final class MybatisEhcache implements SecondLevelCache {
      * @see org.apache.ibatis.cache.Cache#getObject(java.lang.Object)
      */
     public Object getObject(Object key) {
+        if (key == null) {
+            return null;
+        }
+        if (cache == null) {
+            return null;
+        }
         long t1 = System.currentTimeMillis();
         Element cachedElement = cache.get(CacheKeyUtils.creadkey(key));
         if (cachedElement == null) {
