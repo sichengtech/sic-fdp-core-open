@@ -17,9 +17,9 @@ import com.sicheng.common.persistence.dialect.Dialect;
 /**
  * MSSQLServer 数据库实现分页方言
  *
- * @author poplar.yfyang
- * @version 1.0 2010-10-10 下午12:31
- * @since JDK 1.5
+ * @author zhaolei
+ * @version 1.0 2010-10-01
+ * 
  */
 public class SQLServerDialect implements Dialect {
 

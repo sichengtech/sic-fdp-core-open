@@ -18,7 +18,7 @@ import com.sicheng.common.persistence.dialect.Dialect;
  * Mysql方言的实现
  *
  * @version 1.0 2010-10-10
- * @since JDK 1.5
+ * 
  */
 public class MySQLDialect implements Dialect {
 

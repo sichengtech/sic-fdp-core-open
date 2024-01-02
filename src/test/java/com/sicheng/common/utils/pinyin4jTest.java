@@ -14,6 +14,14 @@ package com.sicheng.common.utils;
 
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
+/**
+ * <p>标题: WildcardUtilsTest</p>
+ * <p>描述: </p>
+ * <p>公司: 思程科技 www.sicheng.net</p>
+ *
+ * @author zhaolei
+ * @date 2018年2月17日 下午8:32:02
+ */
 public class pinyin4jTest {
 
     public static void main(String[] args) throws BadHanyuPinyinOutputFormatCombination {

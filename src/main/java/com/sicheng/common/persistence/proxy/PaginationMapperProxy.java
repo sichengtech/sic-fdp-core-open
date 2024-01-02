@@ -29,9 +29,9 @@ import java.util.Set;
  * .
  * </p>
  *
- * @author poplar.yfyang
+ * @author zhaolei
  * @version 1.0 2012-05-13 上午10:07
- * @since JDK 1.5
+ * 
  */
 public class PaginationMapperProxy implements InvocationHandler {
 

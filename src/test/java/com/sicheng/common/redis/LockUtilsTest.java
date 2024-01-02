@@ -17,6 +17,14 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * <p>标题: WildcardUtilsTest</p>
+ * <p>描述: </p>
+ * <p>公司: 思程科技 www.sicheng.net</p>
+ *
+ * @author zhaolei
+ * @date 2018年2月17日 下午8:32:02
+ */
 @RunWith(SpringJUnit4ClassRunner.class)//表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = {"classpath*:spring-context*.xml"})
 public class LockUtilsTest {

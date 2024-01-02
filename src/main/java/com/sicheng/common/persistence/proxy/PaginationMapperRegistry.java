@@ -22,9 +22,9 @@ import org.apache.ibatis.session.SqlSession;
  * .
  * </p>
  *
- * @author poplar.yfyang
+ * @author zhaolei
  * @version 1.0 2012-05-13 上午10:06
- * @since JDK 1.5
+ * 
  */
 public class PaginationMapperRegistry extends MapperRegistry {
     public PaginationMapperRegistry(Configuration config) {

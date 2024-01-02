@@ -18,9 +18,9 @@ import com.sicheng.common.persistence.dialect.Dialect;
  * Sybase数据库分页方言实现。
  * 还未实现
  *
- * @author poplar.yfyang
- * @version 1.0 2010-10-10 下午12:31
- * @since JDK 1.5
+ * @author zhaolei
+ * @version 1.0 2010-10-01
+ * 
  */
 public class SybaseDialect implements Dialect {
 

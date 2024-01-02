@@ -21,7 +21,7 @@ import java.util.*;
  * Collections工具集.
  * 在JDK的Collections和Guava的Collections2后, 命名为Collections3.
  *
- * @author admin
+ * @author zhaolei
  * @version 2013-01-15
  */
 @SuppressWarnings("rawtypes")

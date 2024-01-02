@@ -21,7 +21,6 @@ import java.util.Collection;
  * <p> @Description 将GBK编码格式的文件转换为UTF-8编码格式的文件
  *
  * 我们在新拿到一个项目的时候，尤其是老项目，很可能之前的项目编码是GBK，而我们的编译器默认编码为UTF-8，会出现乱码，如果我们一个一个文件的进行编码转换会非常麻烦，所以使用java实现了一个批量将GBK编码转换为UTF-8编码的工具类。
- *
  */
 public class GBK2UTF8 {
     public static void main(String[] args) throws Exception {
