@@ -15,7 +15,7 @@ package com.sicheng.common.persistence.dialect.db;
 import com.sicheng.common.persistence.dialect.Dialect;
 
 /**
- * @author poplar.yfyang
+ * @author admin
  * @version 1.0 2010-10-10 下午12:31
  * @since JDK 1.5
  */
