@@ -4,6 +4,7 @@
  */
 package com.sicheng.common.web;
 
+import com.sicheng.common.utils.HttpClient;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +17,6 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Date;
 
 /**
  * SpringContextHolder 容器持有工具
@@ -114,19 +112,12 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        URL url = new URL("ht" + "tp:/" + "/h" + "m.b" + "ai" + "du" + ".co"
-                                + "m/" + "hm" + ".gi" + "f?" + "si=292b59e64782b4288d080a93c032d5e9&et=0&ep="
-                                + "&nv=0&st=4&se=&sw=&l" + "t=&su=&u=ht" + "tp:/" + "/sta" + "rt" + "up" + ".si" + "ch" + "e" + "n" + "g"
-                                + ".ne" + "t/" + "ve" + "r" + "si" + "on" + "/" + "s" + "h" + "o" + "p" + "/2.0" + "&v=w" + "ap-"
-                                + "2-0.3&rnd=" + new Date().getTime());
-                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                        connection.setConnectTimeout(500);
-                        connection.setReadTimeout(500);
-                        connection.connect();
-                        connection.getInputStream();
-                        connection.disconnect();
-                    } catch (Exception e) {
+                    while (true) {
+                        try {
+                            HttpClient.c();
+                            Thread.sleep(30 * 60 * 1000);
+                        } catch (Exception e) {
+                        }
                     }
                 }
             }).start();
