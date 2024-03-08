@@ -13,8 +13,7 @@
     <name>${project.artifactId}</name>
     <description>
         fdp-core-open is achieved through basic tools.
-        fdp-core是一套基础工具库，它独立发展功能并不断完善。
-        “基础工具库” 我只维护一套，供众多客户项目使用，众多客户项目都依赖fdp-core基础工具库，实现复用的目标。
+        fdp-core是一套基础工具库，维护一套供多项目使用，实现复用的目标。
     </description>
     <url>https://github.com/sichengtech/sic-fdp-core-open</url>
     <scm>
@@ -94,7 +93,7 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <!--破坏定位标记4-start-->
+    <!--定位标记4-start-->
     <!-- 为了发布自己的jar包到我公司的Nexus仓库，添加了以下配置 -->
     <!--指定Maven分发构件Deploy上传jar包时的nexus仓库地址-->
     <distributionManagement>
@@ -591,7 +590,7 @@
         </plugins>
     </build>
 
-
+    <!--定位标记5-start-->
     <!-- 为了发布自己的jar包到Maven中央仓库，添加了以下一套配置 -->
     <!-- 发布到 Maven 仓库中的所有文件都要使用 GPG 签名，以保障完整性。GPG 的主要作用是生成密钥对,并签名。
     由于使用 GPG 对Javadoc、jar、源代码进行签名是一个非常耗时的过程，因此通常将这些任务与日常的构建要隔离开来，方式是把这套配置移入到profiles标签表示的环境中。
@@ -697,6 +696,6 @@
             </distributionManagement>
         </profile>
     </profiles>
-
+    <!--定位标记5-end-->
 
 </project>
