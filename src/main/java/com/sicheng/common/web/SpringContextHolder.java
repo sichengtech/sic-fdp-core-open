@@ -1,7 +1,7 @@
 /**
- * SiC B2B2C Shop 使用 木兰公共许可证,第2版（Mulan PubL v2） 开源协议，请遵守相关条款，或者联系sicheng.net获取商用授权书。
+ * 本作品使用 木兰公共许可证,第2版（Mulan PubL v2） 开源协议，请遵守相关条款，或者联系sicheng.net获取商用授权。
  * Copyright (c) 2016 SiCheng.Net
- * SiC B2B2C Shop is licensed under Mulan PubL v2.
+ * This software is licensed under Mulan PubL v2.
  * You can use this software according to the terms and conditions of the Mulan PubL v2.
  * You may obtain a copy of Mulan PubL v2 at:
  *          http://license.coscl.org.cn/MulanPubL-2.0
@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletRequest;
  * 持有Spring的容器 ApplicationContext，可在任何地方取出ApplicaitonContext
  * 获取Spring mvc的容器 WebApplicationContext （依赖于request）
  *
- * @author 赵磊  http://elf8848.iteye.com/blog/875830
+ * @author zhaolei  http://elf8848.iteye.com/blog/875830
  * @date 2011-01-16
  */
 public class SpringContextHolder implements ApplicationContextAware, DisposableBean {

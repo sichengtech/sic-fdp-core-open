@@ -1,7 +1,7 @@
 /**
- * SiC B2B2C Shop 使用 木兰公共许可证,第2版（Mulan PubL v2） 开源协议，请遵守相关条款，或者联系sicheng.net获取商用授权书。
+ * 本作品使用 木兰公共许可证,第2版（Mulan PubL v2） 开源协议，请遵守相关条款，或者联系sicheng.net获取商用授权。
  * Copyright (c) 2016 SiCheng.Net
- * SiC B2B2C Shop is licensed under Mulan PubL v2.
+ * This software is licensed under Mulan PubL v2.
  * You can use this software according to the terms and conditions of the Mulan PubL v2.
  * You may obtain a copy of Mulan PubL v2 at:
  *          http://license.coscl.org.cn/MulanPubL-2.0
@@ -41,7 +41,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     public String getHeader(String name) {
         //1%走这里，是针对有"If-None-Match"请求头的特殊处理。
         //请求头示例：If-None-Match: W/"43311-1685218978000"，注意它的值中带有引号，就是这个引号遇到“防止xss攻击程序”无法正常工作了。
-        //遇到问题的现象描述：浏览器请求某个css文件，第一次下返回200，第二次返回400，很有过滤。都因为第二次请求头中有If-None-Match的原因。
+        //遇到问题的现象描述：浏览器请求某个css文件，第一次下返回200，第二次返回400，很有规律。都因为第二次请求头中有If-None-Match的原因。
         //参考：https://blog.csdn.net/gyr962/article/details/122497892
         //解决方法：遇到"If-None-Match"请求头，对他的值不做转义处理。
         if("If-None-Match".equals(name)){

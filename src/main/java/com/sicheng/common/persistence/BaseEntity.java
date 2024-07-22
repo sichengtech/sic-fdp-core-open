@@ -1,7 +1,7 @@
 /**
- * SiC B2B2C Shop 使用 木兰公共许可证,第2版（Mulan PubL v2） 开源协议，请遵守相关条款，或者联系sicheng.net获取商用授权书。
+ * 本作品使用 木兰公共许可证,第2版（Mulan PubL v2） 开源协议，请遵守相关条款，或者联系sicheng.net获取商用授权。
  * Copyright (c) 2016 SiCheng.Net
- * SiC B2B2C Shop is licensed under Mulan PubL v2.
+ * This software is licensed under Mulan PubL v2.
  * You can use this software according to the terms and conditions of the Mulan PubL v2.
  * You may obtain a copy of Mulan PubL v2 at:
  *          http://license.coscl.org.cn/MulanPubL-2.0
@@ -66,9 +66,11 @@ public abstract class BaseEntity implements Serializable {
 
     /**
      * 数据库类型
+     * 指明数据库类型，数据库类型值：mysql、oracle、mssql、postgresql
+     * 用途：在底层 Mybatis的Mapper.xml文件中，通过dbType$来判断目标数据库是哪一种数据库技术
      */
     @JsonIgnore
-    protected String dbType = Global.getConfig("jdbc.type");
+    protected String dbType$ = Global.getConfig("jdbc.type");
 
     /**
      * 主键生成方式 （由开发人员选用）
@@ -125,24 +127,20 @@ public abstract class BaseEntity implements Serializable {
         return getId() == null;
     }
 
-//    /**
-//     * 全局变量对象
-//     */
-//    @JsonIgnore
-//    public Global getGlobal() {
-//        return Global.getInstance();
-//    }
-
     /**
-     * 获取数据库类型名称
+     * 获取数据库类型，数据库类型值：mysql、oracle、mssql、postgresql
+     * @return 数据库类型的字符串
      */
     @JsonIgnore
     public String getDbType$() {
-        return dbType;
+        return dbType$;
     }
 
-    public void setDbType$(String dbType) {
-        this.dbType = dbType;
+    /**
+     * 设置  数据库类型，数据库类型值：mysql、oracle、mssql、postgresql
+     */
+    public void setDbType$(String dbType$) {
+        this.dbType$ = dbType$;
     }
 
     @Override

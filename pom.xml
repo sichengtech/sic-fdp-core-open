@@ -5,7 +5,7 @@
     <groupId>io.github.sichengtech</groupId>
     <artifactId>fdp-core-open</artifactId>
 <!--    <version>3.6.4-SNAPSHOT</version>-->
-    <version>3.6.7</version>
+    <version>3.6.8</version>
     <packaging>jar</packaging>
 
     <!-- 为了发布自己的jar包到Maven中央仓库，添加了以下配置，Sonatype仓库便是Maven中央仓库指定的暂存库 -->
