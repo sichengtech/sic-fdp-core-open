@@ -12,16 +12,9 @@
  */
 package com.sicheng.admin.sys.entity;
 
-import com.sicheng.admin.sys.dao.UserDao;
-import com.sicheng.common.utils.StringUtils;
-import com.sicheng.common.web.SpringContextHolder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import java.util.Map;
 
-//import com.sicheng.admin.store.dao.StoreIndustryDao;
-//import com.sicheng.admin.store.entity.Store;
-//import com.sicheng.admin.store.entity.StoreIndustry;
 
 /**
  * 日志 Entity 子类，请把你的业务代码写在这里
@@ -52,16 +45,7 @@ public class Log extends SysLogBase<Log> {
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void setParams(Map paramMap) {
-        if (paramMap == null) {
-            return;
-        }
-        StringBuilder params = new StringBuilder();
-        for (Map.Entry<String, String[]> param : ((Map<String, String[]>) paramMap).entrySet()) {
-            params.append(("".equals(params.toString()) ? "" : "&") + param.getKey() + "=");
-            String paramValue = (param.getValue() != null && param.getValue().length > 0 ? param.getValue()[0] : "");
-            params.append(StringUtils.abbr(StringUtils.endsWithIgnoreCase(param.getKey(), "password") ? "" : paramValue, 100));
-        }
-        this.setParams(params.toString());
+
     }
 
     @Override
@@ -72,13 +56,7 @@ public class Log extends SysLogBase<Log> {
     private User user;
 
     public User getUser() {
-        if (user == null) {
-            UserDao dao = SpringContextHolder.getBean(UserDao.class);
-            if (this.getCreateBy() != null) {
-                user = dao.selectById(this.getCreateBy().getId());
-            }
-        }
-        return user;
+        return null;
     }
 
     public void setUser(User user) {

@@ -13,15 +13,7 @@
 package com.sicheng.admin.sys.entity;
 
 import com.google.common.collect.Lists;
-import com.sicheng.admin.sys.dao.MenuDao;
-import com.sicheng.admin.sys.dao.SysRoleMenuDao;
-import com.sicheng.common.persistence.wrapper.Wrapper;
-import com.sicheng.admin.sys.dao.OfficeDao;
-import com.sicheng.admin.sys.dao.SysRoleOfficeDao;
-import com.sicheng.common.config.Global;
-import com.sicheng.common.web.SpringContextHolder;
 import org.apache.commons.lang3.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +28,6 @@ public class Role extends RoleBase<Role> {
     private static final long serialVersionUID = 1L;
 
     public Role() {
-        super();
-        this.setDataScope(DATA_SCOPE_ALL);
-        this.setUseable(Global.YES);
     }
 
     public Role(Long id) {
@@ -97,21 +86,7 @@ public class Role extends RoleBase<Role> {
     }
 
     public List<Long> getMenuIdList() {
-        List<Long> menuIdList = Lists.newArrayList();
-        SysRoleMenuDao sysRoleMenuDao = SpringContextHolder.getBean(SysRoleMenuDao.class);
-        List<SysRoleMenu> sysRoleMenus = sysRoleMenuDao.selectByWhere(null, new Wrapper().and("role_id=", this.getId()));
-        if (!sysRoleMenus.isEmpty()) {
-            List<Long> menIds = new ArrayList<Long>();
-            for (int i = 0; i < sysRoleMenus.size(); i++) {
-                menIds.add(sysRoleMenus.get(i).getMenuId());
-            }
-            MenuDao menuDao = SpringContextHolder.getBean(MenuDao.class);
-            menuList = menuDao.selectByWhere(null, new Wrapper().and("id in", menIds));
-        }
-        for (Menu menu : menuList) {
-            menuIdList.add(menu.getId());
-        }
-        return menuIdList;
+        return null;
     }
 
     public void setMenuIdList(List<Long> menuIdList) {
@@ -141,17 +116,7 @@ public class Role extends RoleBase<Role> {
     }
 
     public List<Office> getOfficeList() {
-        SysRoleOfficeDao sysRoleOfficeDao = SpringContextHolder.getBean(SysRoleOfficeDao.class);
-        List<SysRoleOffice> sysRoleOffices = sysRoleOfficeDao.selectByWhere(null, new Wrapper().and("role_id=", this.getId()));
-        if (!sysRoleOffices.isEmpty()) {
-            List<Long> officeIds = new ArrayList<Long>();
-            for (int i = 0; i < sysRoleOffices.size(); i++) {
-                officeIds.add(sysRoleOffices.get(i).getOfficeId());
-            }
-            OfficeDao officeDao = SpringContextHolder.getBean(OfficeDao.class);
-            officeList = officeDao.selectByWhere(null, new Wrapper().and("id in", officeIds));
-        }
-        return officeList;
+        return null;
     }
 
     public void setOfficeList(List<Office> officeList) {
