@@ -3,10 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.sichengtech</groupId>
-    <artifactId>fdp-core-open</artifactId>
-<!--    <version>3.6.4-SNAPSHOT</version>-->
-    <version>3.6.8</version>
-    <packaging>jar</packaging>
+    <artifactId>fdp-core-all-open</artifactId>
+<!--    <version>4.0.0-SNAPSHOT</version>-->
+    <version>4.0.0</version>
+    <packaging>pom</packaging>
+    <modules>
+    <module>fdp-data-open</module>
+    <module>fdp-core-open</module>
+    </modules>
 
     <!-- 为了发布自己的jar包到Maven中央仓库，添加了以下配置，Sonatype仓库便是Maven中央仓库指定的暂存库 -->
     <!-- 项目 URL 、SCM信息、开发者信息 -->

@@ -14,13 +14,6 @@ package com.sicheng.admin.sys.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
-import com.sicheng.admin.sys.dao.RoleDao;
-import com.sicheng.admin.sys.dao.SysUserRoleDao;
-import com.sicheng.common.persistence.wrapper.Wrapper;
-import com.sicheng.common.utils.Collections3;
-import com.sicheng.common.web.SpringContextHolder;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -81,20 +74,7 @@ public class User extends UserBase<User> {
 
     @JsonIgnore
     public List<Long> getRoleIdList() {
-        SysUserRoleDao sysUserRoleDao = SpringContextHolder.getBean(SysUserRoleDao.class);
-        List<SysUserRole> sysUserRoles = sysUserRoleDao.selectByWhere(null, new Wrapper(new SysUserRole()).and("user_id=", this.getId()));
-        if (!sysUserRoles.isEmpty()) {
-            List<Long> roleIds = new ArrayList<Long>();
-            for (int i = 0; i < sysUserRoles.size(); i++) {
-                roleIds.add(sysUserRoles.get(i).getRoleId());
-            }
-            RoleDao roleDao = SpringContextHolder.getBean(RoleDao.class);
-            roleList = roleDao.selectByWhere(null, new Wrapper().and("id in", roleIds));
-        }
-        for (Role role : roleList) {
-            roleIdList.add(role.getId());
-        }
-        return roleIdList;
+        return null;
     }
 
     public void setRoleIdList(List<Long> roleIdList) {
@@ -105,7 +85,7 @@ public class User extends UserBase<User> {
      * 用户拥有的角色名称字符串, 多个角色名称用','分隔.
      */
     public String getRoleNames() {
-        return Collections3.extractToString(roleList, "name", ",");
+        return null;
     }
 
     public boolean isAdmin() {
