@@ -6,7 +6,7 @@
     <artifactId>fdp-core-all-open</artifactId>
     <!-- 注意：变更版本时，还要同时修改2个子模块的版本号，保持一致，否则会发行失败。-->
 <!--    <version>4.1.0-SNAPSHOT</version>-->
-    <version>4.1.0</version>
+    <version>4.1.1</version>
     <!-- 注意：变更版本时，还要同时修改2个子模块的版本号，保持一致，否则会发行失败。-->
     <packaging>pom</packaging>
     <modules>

@@ -36,7 +36,7 @@ public class IdGen {//implements IdGenerator {
         System.out.println(IdGen.uuid());//b41e85a17aeb481d9b1b983a52dbb952
         System.out.println(IdGen.snowflake());//821189889077248000
         System.out.println(IdGen.randomLong());//3229101691926935436
-        System.out.println(IdGen.randomBase62(3));//Hxc60
+        System.out.println(IdGen.randomBase62(3));//Ro1
     }
 
     /**

@@ -16,6 +16,7 @@ import com.sicheng.common.config.Global;
 import com.sicheng.common.persistence.Page;
 import com.sicheng.common.persistence.dialect.Dialect;
 import com.sicheng.common.persistence.dialect.db.*;
+import com.sicheng.common.utils.StringUtils;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.plugin.Interceptor;
@@ -103,6 +104,9 @@ public abstract class BaseInterceptor implements Interceptor, Serializable {
     protected void initProperties(Properties p) {
         Dialect dialect = null;
         String dbType = Global.getConfig("jdbc.type");
+        if(StringUtils.isNotBlank(dbType)){
+            dbType=dbType.trim().toLowerCase();
+        }
         if ("db2".equals(dbType)) {
             dialect = new DB2Dialect();
         } else if ("derby".equals(dbType)) {
@@ -115,15 +119,15 @@ public abstract class BaseInterceptor implements Interceptor, Serializable {
             dialect = new MySQLDialect();
         } else if ("oracle".equals(dbType)) {
             dialect = new OracleDialect();
-        } else if ("postgre".equals(dbType)) {
+        } else if ("postgresql".equals(dbType)) {
             dialect = new PostgreSQLDialect();
-        } else if ("mssql".equals(dbType) || "sqlserver".equals(dbType)) {
+        } else if ("mssql".equals(dbType)) {
             dialect = new SQLServer2005Dialect();
         } else if ("sybase".equals(dbType)) {
             dialect = new SybaseDialect();
         }
         if (dialect == null) {
-            throw new RuntimeException("mybatis dialect error.");
+            throw new RuntimeException("Mybatis分页拦截器基类 BaseInterceptor类initProperties()在选择言时发发生错误 ，mybatis dialect error.");
         }
         DIALECT = dialect;
     }
